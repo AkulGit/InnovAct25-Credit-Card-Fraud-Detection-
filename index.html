@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credit Card Fraud Detector</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Credit Card Fraud Detector</h1>
+    <form id="fraudForm">
+      <label for="amount">Transaction Amount ($):</label>
+      <input type="number" id="amount" name="amount" required>
+
+      <label for="time">Transaction Time (0–24h):</label>
+      <input type="number" id="time" name="time" required>
+
+      <label for="location">Location (City):</label>
+      <input type="text" id="location" name="location" required>
+
+      <label for="merchant">Merchant:</label>
+      <input type="text" id="merchant" name="merchant" required>
+
+      <button type="submit">Check Fraud</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
