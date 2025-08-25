@@ -26,6 +26,7 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 # GridSearchCV for RandomForest
+#definging the hyperparameters grid
 param_grid = {
     "n_estimators": [50, 100, 150], #no of trees
     "max_depth": [None, 10, 20], #max depth of each tree
@@ -35,6 +36,7 @@ param_grid = {
 
 #finds best parameters, uses all cpu cores 
 grid = GridSearchCV(RandomForestClassifier(random_state=42), param_grid, cv=3, n_jobs=-1)
+#trains Random forest for every combination of hyperparameters in the grid
 grid.fit(X_train_scaled, y_train)
 
 best_model = grid.best_estimator_
