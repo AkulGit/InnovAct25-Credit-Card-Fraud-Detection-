@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Card Fraud Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Credit Card Fraud Detection</h1>
+        <form method="POST" class="form-container">
+            <div class="input-group">
+                <label>Amount</label>
+                <input type="number" step="any" name="amount" required>
+            </div>
+            <div class="input-group">
+                <label>Time</label>
+                <input type="number" step="any" name="time" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+
+    {% if generated_features %}
+        <h2>Randomly Generated Features:</h2>
+        <ul>
+        {% for key, value in generated_features.items() %}
+            <li>{{ key }}: {{ "%.4f"|format(value) }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
