@@ -10,25 +10,30 @@ df = pd.read_csv("creditcard.csv", sep='\t')  # use tab separator
 print(df.columns)
 
 target_col = "Class" 
-X = df.drop(target_col, axis=1)
-y = df[target_col]
+X = df.drop(target_col, axis=1) #input features
+y = df[target_col] #target variable
 
-# Train/test split
+# train/test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+#20% for testing, rest 80% for training.
+#random state fixes random shuffling i.e produces reproducible results
+#train variables train the model, test variables evaluate it.
 
-# Scale features
+
+#Scale features -> adjust measurements so that they're on the same scale so that the algorithm treats them equally
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 # GridSearchCV for RandomForest
 param_grid = {
-    "n_estimators": [50, 100, 150],
-    "max_depth": [None, 10, 20],
-    "min_samples_split": [2, 5],
-    "min_samples_leaf": [1, 2]
+    "n_estimators": [50, 100, 150], #no of trees
+    "max_depth": [None, 10, 20], #max depth of each tree
+    "min_samples_split": [2, 5], #min samples required to split a node 
+    "min_samples_leaf": [1, 2] #min samples required at a leaf node 
 }
 
+#finds best parameters, uses all cpu cores 
 grid = GridSearchCV(RandomForestClassifier(random_state=42), param_grid, cv=3, n_jobs=-1)
 grid.fit(X_train_scaled, y_train)
 
