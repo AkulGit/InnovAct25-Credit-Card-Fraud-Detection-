@@ -1,21 +1,34 @@
 # Credit Card Fraud Detection (Flask + ML)
+This project is a Flask web app that helps detect fraudulent credit card transactions.
+It uses a trained machine learning model (by default, a Random Forest) to analyze transaction details.
 
-This project is a Flask-based web application for detecting fraudulent credit card transactions.
-It uses a trained machine learning model (Random Forest by default) and allows users to input transaction details, generate feature values, and get a fraud/not-fraud prediction.
+Users can:
+
+- Enter transaction information through the web interface.
+
+- Automatically generate the necessary features for the model.
+
+- Get a clear prediction on whether the transaction is fraudulent or legitimate.
 
 ## Features
+- **Simple Web Interface**
+    Built with plain HTML and CSS, keeping the design clean and lightweight without external frameworks.
 
-- Simple web interface with clean UI (HTML + CSS only, no external frameworks).
+- **User Inputs**
+    Accepts only two inputs from the user: Amount and Time of the transaction.
 
-- Takes Amount and Time as user inputs.
+- **Automatic Feature Generation**
+    Generates the additional V1–V28 anonymized features required by the machine learning model.
 
-- Automatically generates V1–V28 anonymized features to complete the dataset.
+- **Clear Prediction Results**
+    Displays a straightforward output: Fraudulent or Not Fraudulent.
 
-- Displays prediction result clearly (Fraud or Not Fraud).
-
-- Offline-ready (no Bootstrap or CDN needed).
+- **Offline Friendly**
+    Works entirely offline without relying on Bootstrap or external CDNs.
 
 ## Project Structure
+
+```plaintext
 fraud-detection-app/
 │
 ├── app.py                 # Flask backend
@@ -28,6 +41,7 @@ fraud-detection-app/
 │   └── style.css          # Custom styling
 │
 └── README.md              # Project documentation
+```
 
 # Installation & Setup
 
